@@ -1,0 +1,27 @@
+Variables:
+    character : char
+    length, words, vowels : integer
+
+Begin
+    length ← 0
+    words ← 1            // Start at 1 since the first word comes before the first space
+    vowels ← 0
+
+    Repeat
+        Read(character)
+        length ← length + 1
+
+        If character = ' ' Then
+            words ← words + 1
+        EndIf
+
+        If character is in ['a','e','i','o','u','y','A','E','I','O','U','Y'] Then
+            vowels ← vowels + 1
+        EndIf
+
+    Until character = '.'
+
+    Write("Length of the sentence: ", length)
+    Write("Number of words: ", words)
+    Write("Number of vowels: ", vowels)
+End
