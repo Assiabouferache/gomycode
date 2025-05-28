@@ -1,4 +1,4 @@
-Problem 1 Answer:
+Problem 1 Answer: 
 
 Algorithm SumOfDistinctElements(set1, set2)
     sum ← 0
