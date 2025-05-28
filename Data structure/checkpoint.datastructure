@@ -1,0 +1,57 @@
+Problem 1 Answer:
+
+Algorithm SumOfDistinctElements(set1, set2)
+    sum ← 0
+    for i from 0 to length(set1) - 1 do
+        found ← false
+        for j from 0 to length(set2) - 1 do
+            if set1[i] = set2[j] then
+                found ← true
+                break
+        if found = false then
+            sum ← sum + set1[i]
+
+    for i from 0 to length(set2) - 1 do
+        found ← false
+        for j from 0 to length(set1) - 1 do
+            if set2[i] = set1[j] then
+                found ← true
+                break
+        if found = false then
+            sum ← sum + set2[i]
+
+    return sum
+
+Problem 2 Answer Using Procedure:
+
+Procedure dot_product(v1, v2, n, Output ps)
+    ps ← 0
+    for i from 0 to n - 1 do
+        ps ← ps + (v1[i] * v2[i])
+
+Algorithm CheckOrthogonality_Procedure(vectors1, vectors2, n, m)
+    for k from 0 to m - 1 do
+        Call dot_product(vectors1[k], vectors2[k], n, ps)
+        if ps = 0 then
+            Print "Vectors ", k+1, " are orthogonal"
+        else
+            Print "Vectors ", k+1, " are NOT orthogonal"
+
+Problem 2 Answer Using Function:
+
+Function dot_product(v1, v2, n)
+    ps ← 0
+    for i from 0 to n - 1 do
+        ps ← ps + (v1[i] * v2[i])
+    return ps
+
+Algorithm CheckOrthogonality_Function(vectors1, vectors2, n, m)
+    for k from 0 to m - 1 do
+        ps ← dot_product(vectors1[k], vectors2[k], n)
+        if ps = 0 then
+            Print "Vectors ", k+1, " are orthogonal"
+        else
+            Print "Vectors ", k+1, " are NOT orthogonal"
+
+
+
