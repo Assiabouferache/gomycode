@@ -1,62 +1,57 @@
 import React from "react";
-import { Navbar, Container, Nav, Card, Row, Col } from "react-bootstrap";
-
-function MyComponent() {
-  return (
-    <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">My Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
-      {/* Heading */}
-      <Container className="my-4">
-        <h1>Welcome to the React Bootstrap Example</h1>
-      </Container>
-
-      {/* Cards */}
-      <Container>
-        <Row>
-          <Col md={4}>
-            <Card>
-              <Card.Body>
-                <Card.Title>Card 1</Card.Title>
-                <Card.Text>This is the first card.</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={4}>
-            <Card>
-              <Card.Body>
-                <Card.Title>Card 2</Card.Title>
-                <Card.Text>This is the second card.</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={4}>
-            <Card>
-              <Card.Body>
-                <Card.Title>Card 3</Card.Title>
-                <Card.Text>This is the third card.</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
-}
+import { Card, Container } from "react-bootstrap";
+import { Name } from "./name";
+import { Price } from "./price";
+import { Description } from "./description";
+import { Image } from "./image";
+import { products } from "./Product";
 
 export default function App() {
+  // First name variable; change this to test conditional rendering
+  const firstName = "Daniel"; // Try "" or undefined to see the alternate greeting
+
+  // Pick the first product to display in the card (you can customize)
+  const product = products[0];
+
   return (
-    <div className="App">
-      <MyComponent />
-    </div>
+    <Container className="my-5" style={{ maxWidth: "400px" }}>
+      <Card
+        className="shadow-lg"
+        style={{ borderRadius: "20px", backgroundColor: "#f9f9f9" }}
+      >
+        <Image src={product.image} alt={product.name} />
+        <Card.Body>
+          <Name productName={product.name} />
+          <Price price={product.price} />
+          <Description description={product.description} />
+        </Card.Body>
+      </Card>
+
+      <div
+        style={{
+          marginTop: "20px",
+          fontSize: "1.2rem",
+          fontWeight: "bold",
+          textAlign: "center",
+        }}
+      >
+        {firstName ? `Hello, ${firstName}!` : "Hello, there!"}
+      </div>
+
+      {firstName && (
+        <div style={{ marginTop: "10px", textAlign: "center" }}>
+          <img
+            src="https://avatars.githubusercontent.com/u/583231?v=4" // Sample image; replace if you want
+            alt={firstName}
+            style={{
+              width: "100px",
+              height: "100px",
+              borderRadius: "50%",
+              border: "3px solid #333",
+            }}
+          />
+        </div>
+      )}
+    </Container>
   );
 }
