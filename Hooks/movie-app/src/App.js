@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/Navbar";
 import Filter from "./components/Filter";
 import MovieList from "./components/MovieList";
 import AddMovie from "./components/AddMovie";
+import MovieDetail from "./components/MovieDetail";
 import { Container } from "react-bootstrap";
 
 const initialMovies = [
@@ -12,6 +14,7 @@ const initialMovies = [
       "A thief who steals corporate secrets through use of dream-sharing technology...",
     posterURL: "https://m.media-amazon.com/images/I/51oD-nzDcpL._AC_.jpg",
     rating: 5,
+    trailerURL: "https://www.youtube.com/embed/YoHD9XEInc0",
   },
   {
     title: "Stranger Things",
@@ -20,12 +23,14 @@ const initialMovies = [
     posterURL:
       "https://m.media-amazon.com/images/I/81aG2OJGHxL._AC_SL1500_.jpg",
     rating: 4,
+    trailerURL: "https://www.youtube.com/embed/b9EkMc79ZSU",
   },
   {
     title: "The Dark Knight",
     description: "Batman faces the Joker in this intense action thriller.",
     posterURL: "https://m.media-amazon.com/images/I/51k0qa8plXL._AC_.jpg",
     rating: 5,
+    trailerURL: "https://www.youtube.com/embed/EXeTwQWrcwY",
   },
 ];
 
@@ -34,12 +39,10 @@ function App() {
   const [filterTitle, setFilterTitle] = useState("");
   const [filterRating, setFilterRating] = useState(0);
 
-  // Add new movie handler
   const addMovie = (movie) => {
     setMovies([...movies, movie]);
   };
 
-  // Filter logic
   const filteredMovies = movies.filter(
     (movie) =>
       movie.title.toLowerCase().includes(filterTitle.toLowerCase()) &&
@@ -50,14 +53,27 @@ function App() {
     <>
       <NavigationBar />
       <Container>
-        <AddMovie addMovie={addMovie} />
-        <Filter
-          filterTitle={filterTitle}
-          setFilterTitle={setFilterTitle}
-          filterRating={filterRating}
-          setFilterRating={setFilterRating}
-        />
-        <MovieList movies={filteredMovies} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <AddMovie addMovie={addMovie} />
+                <Filter
+                  filterTitle={filterTitle}
+                  setFilterTitle={setFilterTitle}
+                  filterRating={filterRating}
+                  setFilterRating={setFilterRating}
+                />
+                <MovieList movies={filteredMovies} />
+              </>
+            }
+          />
+          <Route
+            path="/movie/:title"
+            element={<MovieDetail movies={movies} />}
+          />
+        </Routes>
       </Container>
     </>
   );

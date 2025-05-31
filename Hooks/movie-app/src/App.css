@@ -1,0 +1,44 @@
+body {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  font-family: 'Quicksand', sans-serif;
+  color: #4A235A;
+  margin: 0;
+  padding: 0;
+}
+
+h2, h3, h4 {
+  color: #A83279;
+}
+
+button {
+  border-radius: 50px !important;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f48fb1 !important;
+  color: white !important;
+}
+
+.card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(168, 50, 121, 0.3);
+  transition: transform 0.3s ease;
+  background: #fff0f6;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(168, 50, 121, 0.6);
+}
+
+.form-control:focus {
+  border-color: #f06292;
+  box-shadow: 0 0 5px rgba(240, 98, 146, 0.5);
+  outline: none;
+}
+
+.ratio iframe {
+  border-radius: 15px;
+}
